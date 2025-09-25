@@ -1,0 +1,89 @@
+{- #1 Безпечне отримання першого елемента
+Напишіть функцію safeHead, яка повертає перший елемент
+списку або Nothing, якщо список порожній.
+-}
+safeHead :: [a] -> Maybe a
+safeHead [] = Nothing
+safeHead (x:_) = Just x
+
+{- #2 Безпечне ділення
+Напишіть функцію safeDiv, яка виконує ділення
+з перевіркою ділення на нуль.
+-}
+safeDiv :: (Eq a, Fractional a) => a -> a -> Maybe a
+safeDiv _ 0 = Nothing
+safeDiv x y = Just (x/y)
+
+{- #3 Побудова множника
+Напишіть функцію mkMultiplier, яка приймає число
+і повертає функцію множення на це число.
+-}
+mkMultiplier :: Num a => a -> (a -> a)
+mkMultiplier n = (\x -> n * x)
+
+{- #4 Застосування функції двічі
+Напишіть функцію applyTwice, яка приймає 
+функцію та значення, і застосовує функцію двічі.
+-}
+applyTwice :: (a -> a) -> a -> a
+applyTwice f x = f(f x)
+
+{- #5 Власна реалізація map
+Реалізуйте свою версію функції map під назвою myMap.
+-}
+myMap :: (a -> b) -> [a] -> [b]
+myMap _ [] = []
+myMap f (x:xs) = f x : myMap f xs
+
+{- #6 Фільтрація за предикатом
+Реалізуйте свою версію filter під назвою myFilter.
+-}
+myFilter :: (a -> Bool) -> [a] -> [a]
+myFilter _ [] = []
+myFilter p (x:xs)
+  | p x = x : myFilter p xs
+  | otherwise = myFilter p xs
+
+{- #7 Обчислення середнього значення
+Реалізуйте функцію avg, яка обчислює середнє значення списку. 
+Якщо список порожній, повертає Nothing.
+-}
+avg :: (Fractional a) => [a] -> Maybe a
+avg [] = Nothing
+avg xs = Just(sum xs / fromIntegral(length xs))
+
+{- #8 Композиція перетворень
+Створіть функцію processList, яка:
+1. Залишає лише непарні числа;
+2. Підносить до квадрату;
+3. Повертає перші 3 елементи.
+-}
+processList :: [Int] -> [Int]
+processList = take 3 . map(^2) . filter odd
+
+{- 9 Пошук елемента в списку
+Напишіть функцію findIndex, яка повертає індекс
+першого входження елемента в списку, або Nothing, якщо
+елемент не знайдено.
+-}
+findIndex :: Eq a => a -> [a] -> Maybe Int
+findIndex target = go 0
+ where
+  go _ [] = Nothing
+  go i (x:xs)
+   | x == target = Just i
+   |otherwise = go (i+1) xs
+
+{- #10 Узагальнене застосування списку функцій
+Напишіть функцію applyAll, яка приймає список функцій
+та одне значення, і послідовно застосовує всі функції до
+цього значення.
+-}
+applyAll :: [a -> a] -> a -> a
+applyAll fs x = foldl(\acc f -> f acc) x fs
+
+{- #11 Бінарний пошук
+Реалізуйте рекурсивну функцію binarySearch, яка приймає
+відсортований список і значення, що потрібно знайти, та
+повертає індекс знайденого елемента або Nothing, якщо такого немає.
+-}
