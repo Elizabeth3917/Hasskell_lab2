@@ -128,53 +128,53 @@ hanoi n from to aux =
 main :: IO ()
 main = do
   putStrLn "=== Завдання 1: safeHead ==="
-  print (safeHead [10,20,30])  -- Just 10
-  print (safeHead ([] :: [Int])) -- Nothing
+  print (safeHead [10,20,30]) 
+  print (safeHead ([] :: [Int]))
 
   putStrLn "\n=== Завдання 2: safeDiv ==="
-  print (safeDiv 10 2)  -- Just 5.0
-  print (safeDiv 7 0)   -- Nothing
+  print (safeDiv 10 2) 
+  print (safeDiv 7 0)  
 
   putStrLn "\n=== Завдання 3: mkMultiplier ==="
   let double = mkMultiplier 2
   let triple = mkMultiplier 3
-  print (double 5)  -- 10
-  print (triple 4)  -- 12
+  print (double 5)  
+  print (triple 4) 
 
   putStrLn "\n=== Завдання 4: applyTwice ==="
-  print (applyTwice (+1) 3)  -- 5
-  print (applyTwice (*2) 4)  -- 16
+  print (applyTwice (+1) 3) 
+  print (applyTwice (*2) 4)  
 
   putStrLn "\n=== Завдання 5: myMap ==="
-  print (myMap (*2) [1,2,3])     -- [2,4,6]
-  print (myMap show [1,2,3])     -- ["1","2","3"]
+  print (myMap (*2) [1,2,3])    
+  print (myMap show [1,2,3])     
 
   putStrLn "\n=== Завдання 6: myFilter ==="
-  print (myFilter even [1..10])  -- [2,4,6,8,10]
-  print (myFilter (>3) [1,2,3,4,5]) -- [4,5]
+  print (myFilter even [1..10])  
+  print (myFilter (>3) [1,2,3,4,5]) 
 
   putStrLn "\n=== Завдання 7: avg ==="
-  print (avg [1,2,3,4])  -- Just 2.5
-  print (avg ([] :: [Double]))  -- Nothing
+  print (avg [1,2,3,4])  
+  print (avg ([] :: [Double]))
 
   putStrLn "\n=== Завдання 8: processList ==="
-  print (processList [1..10])   -- [1,9,25]
-  print (processList [2,4,6])   -- []
+  print (processList [1..10])  
+  print (processList [2,4,6])  
 
   putStrLn "\n=== Завдання 9: findIndex ==="
-  print (findIndex 3 [1,2,3,4]) -- Just 2
-  print (findIndex 9 [1,2,3])   -- Nothing
+  print (findIndex 3 [1,2,3,4])
+  print (findIndex 9 [1,2,3])  
 
   putStrLn "\n=== Завдання 10: applyAll ==="
-  print (applyAll [(*2), (+1), (^2)] 3) -- 49
-  print (applyAll [negate, abs] (-5))   -- 5
+  print (applyAll [(*2), (+1), (^2)] 3)
+  print (applyAll [negate, abs] (-5))  
 
   putStrLn "\n=== Завдання 11: binarySearch ==="
-  print (binarySearch [1,3,5,7,9] 5) -- Just 2
-  print (binarySearch [1,3,5,7,9] 4) -- Nothing
+  print (binarySearch [1,3,5,7,9] 5) 
+  print (binarySearch [1,3,5,7,9] 4) 
 
   putStrLn "\n=== Завдання 12: quickSort ==="
-  print (quickSort [3,1,4,1,5,9,2]) -- [1,1,2,3,4,5,9]
+  print (quickSort [3,1,4,1,5,9,2]) 
 
   putStrLn "\n=== Завдання 13: hanoi ==="
   print (hanoi 2 "A" "C" "B")
